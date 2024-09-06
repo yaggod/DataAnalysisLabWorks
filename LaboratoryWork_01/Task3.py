@@ -12,9 +12,7 @@ with Path(argv[0]).parent.joinpath("non-existing.txt").open() as inputFile: # th
     filesToCreate = inputFile.readlines()
 
 
-directoryPath = Path(args.dirpath)
-if(not directoryPath.exists()):
-    directoryPath.mkdir()
+directoryPath = Path(args.dirpath).mkdir(exist_ok=True)
     
 for fileName in filesToCreate:
     try:
