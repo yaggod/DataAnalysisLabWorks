@@ -8,7 +8,7 @@ expectedLength = 2048
 if(len(argv) > 1 ):
     currentPath = Path(argv[1])
 else:
-    currentPath = Path(".")
+    currentPath = Path(argv[0]).parent
 
 allFoundItems = currentPath.glob("*")
 validFiles = []
