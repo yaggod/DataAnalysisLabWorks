@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 
 
 parser = ArgumentParser()
-parser.add_argument("--dirpath", type=str, help="Working directory path (default: current folder)") # that's not the same as path(".")
+parser.add_argument("--dirpath", type=str, default="", help="Working directory path (default: current folder)") # that's not the same as path(".")
 args = parser.parse_args()
 
 filesToCreate = []

@@ -28,7 +28,7 @@ def process_files(directory, filesNames):
     output_and_print_list("non-existing.txt", nonExistingFiles)
 
 def process_directory(directory):
-    print(f"Files found in {directory}: ")
+    print(f"Found files: ")
     currentDirectory = Path(directory)
     totalSize = 0
     for item in currentDirectory.glob("*"):
@@ -39,12 +39,12 @@ def process_directory(directory):
     
             
 parser = ArgumentParser()
-parser.add_argument("--dirpath", type=str, help="Working directory path (default: current folder)")
+parser.add_argument("--dirpath", type=str, default="", help="Working directory path (default: current folder)")
 parser.add_argument("--files", type=str, nargs="*", action="append", help="List of files to check. If not stated, prints some information about directory instead")
 args = parser.parse_args()
 
-if(args.files and len(args.files) > 0):
-    process_files(args.dirpath, args.files[0]) # for some reasong args.files is a list containing another list
+if(args.files and len(args.files[0]) > 0): # for some reasong args.files is a list containing another list
+    process_files(args.dirpath, args.files[0]) 
 else:
     process_directory(args.dirpath)
 
