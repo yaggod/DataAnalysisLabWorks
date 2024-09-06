@@ -12,7 +12,7 @@ args = parser.parse_args()
 def output_and_print_list(fileName, list):
     with open(fileName, "w") as outputFile:
         for item in list:
-            outputFile.write(item)
+            outputFile.write(item + "\n")
             print(item)
 
 def process_files(directory, filesNames):
@@ -33,8 +33,16 @@ def process_files(directory, filesNames):
 
 
 def process_directory(directory):
+    print(f"Files found in {directory}: ")
+    currentDirectory = Path(directory)
+    totalSize = 0
+    for item in currentDirectory.glob("*"):
+        if(item.is_file()):
+            totalSize += item.stat().st_size
+            print(item.name)
+    print(f"Total files size: {totalSize}")
     
-    return
+            
 
 
 if(args.files and len(args.files) > 0):
