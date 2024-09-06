@@ -4,11 +4,11 @@ from argparse import ArgumentParser
 
 
 parser = ArgumentParser()
-parser.add_argument("--dirpath", type=str, default=str(Path(argv[0]).parent), help="Working directory path (default: current folder)") # that's not the same as path(".")
+parser.add_argument("--dirpath", type=str, help="Working directory path (default: current folder)") # that's not the same as path(".")
 args = parser.parse_args()
 
 filesToCreate = []
-with Path(argv[0]).parent.joinpath("non-existing.txt").open() as inputFile:
+with Path(argv[0]).parent.joinpath("non-existing.txt").open() as inputFile: # that's actually not the same as open(fileName, "w")
     filesToCreate = inputFile.readlines()
 
 
