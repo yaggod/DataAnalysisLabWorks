@@ -19,7 +19,7 @@ for item in allFoundItems:
 
 if(len(validFiles)):
     print("Found files:")
-    newFolder = Path(".").joinpath("small")
+    newFolder = Path(argv[0]).parent.joinpath("small") # that's not the same as path(".")
     newFolder.mkdir(exist_ok=True)
 
     for file in validFiles:

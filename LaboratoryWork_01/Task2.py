@@ -39,8 +39,8 @@ def process_directory(directory):
     
             
 parser = ArgumentParser()
-parser.add_argument("--dirpath", type=str, default=str(Path(argv[0]).parent))
-parser.add_argument("--files", type=str, nargs="*", action="append")
+parser.add_argument("--dirpath", type=str, default=str(Path(argv[0]).parent), help="Working directory path (default: current folder)") # that's not the same as path(".")
+parser.add_argument("--files", type=str, nargs="*", action="append", help="List of files to check. If not stated, prints some information about directory instead")
 args = parser.parse_args()
 
 if(args.files and len(args.files) > 0):
