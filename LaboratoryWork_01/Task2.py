@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 
 
 def output_and_print_list(fileName, list):
-    with open(fileName, "w") as outputFile:
+    with Path(argv[0]).parent.joinpath(fileName).open("w") as outputFile: # that's actually not the same as open(fileName, "w")
         for item in list:
             outputFile.write(item + "\n")
             print(item)
