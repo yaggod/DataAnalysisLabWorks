@@ -3,10 +3,6 @@ from pathlib import Path
 from argparse import ArgumentParser
 
 
-parser = ArgumentParser()
-parser.add_argument("--dirpath", type=str, default=str(Path(argv[0]).parent))
-parser.add_argument("--files", type=str, nargs="*", action="append")
-args = parser.parse_args()
 
 
 def output_and_print_list(fileName, list):
@@ -31,7 +27,6 @@ def process_files(directory, filesNames):
     print("Non-existing files: ")
     output_and_print_list("non-existing.txt", nonExistingFiles)
 
-
 def process_directory(directory):
     print(f"Files found in {directory}: ")
     currentDirectory = Path(directory)
@@ -43,7 +38,10 @@ def process_directory(directory):
     print(f"Total files size: {totalSize}")
     
             
-
+parser = ArgumentParser()
+parser.add_argument("--dirpath", type=str, default=str(Path(argv[0]).parent))
+parser.add_argument("--files", type=str, nargs="*", action="append")
+args = parser.parse_args()
 
 if(args.files and len(args.files) > 0):
     process_files(args.dirpath, args.files[0]) # for some reasong args.files is a list containing another list
