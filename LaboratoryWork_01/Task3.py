@@ -11,9 +11,14 @@ filesToCreate = []
 with Path(argv[0]).parent.joinpath("non-existing.txt").open() as inputFile:
     filesToCreate = inputFile.readlines()
 
+
+directoryPath = Path(args.dirpath)
+if(not directoryPath.exists()):
+    directoryPath.mkdir()
+    
 for fileName in filesToCreate:
     try:
-        filePath = Path(args.dirpath).joinpath(fileName.strip())
+        filePath = directoryPath.joinpath(fileName.strip())
         filePath.touch()
     except FileExistsError:
         print(f"{fileName} already exists, skipping")
