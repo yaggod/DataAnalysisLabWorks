@@ -2,7 +2,7 @@ from PIL import Image
 from sys import argv
 
 
-def get_total_colors_weights(image : Image.Image):
+def get_total_colors_weights(image : Image.Image) -> list[int]:
     data = image.getdata()
 
     rgbTotal = [0, 0, 0]

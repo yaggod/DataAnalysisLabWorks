@@ -2,7 +2,7 @@ from PIL import Image
 from sys import argv
 
 
-def process_image(image : Image.Image):
+def process_image(image : Image.Image) -> Image.Image:
     width, height = image.size
     bufferImage = Image.new("RGB", image.size)
     resultImage = Image.new("RGB", (width*4, height))
@@ -16,13 +16,12 @@ def process_image(image : Image.Image):
     return resultImage
 
 
-def tuple_color_masked(originalColor : tuple[int, int, int], maskIndex : int):
+def tuple_color_masked(originalColor : tuple[int, int, int], maskIndex : int) -> tuple[int, int, int]:
     r = originalColor[0] if maskIndex == 0 else 0
     g = originalColor[1] if maskIndex == 1 else 0
     b = originalColor[2] if maskIndex == 2 else 0
 
     return (r, g, b)
-
 
 if(len(argv) < 2):
     print("You should specify filepath")
