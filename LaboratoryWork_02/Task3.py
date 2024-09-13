@@ -1,4 +1,4 @@
-from PIL import Image, ImageFile, ImageDraw
+from PIL import Image, ImageDraw
 from pathlib import Path
 from sys import argv
 
