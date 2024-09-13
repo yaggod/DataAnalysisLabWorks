@@ -2,7 +2,7 @@ from PIL import Image
 from sys import argv
 
 
-def process_image(image):
+def process_image(image : Image):
     width, height = image.size
     bufferImage = Image.new("RGB", image.size)
     resultImage = Image.new("RGB", (width*4, height))
@@ -16,7 +16,7 @@ def process_image(image):
     return resultImage
 
 
-def tuple_color_masked(originalColor, maskIndex):
+def tuple_color_masked(originalColor : tuple[int, int, int], maskIndex : int):
     r = originalColor[0] if maskIndex == 0 else 0
     g = originalColor[1] if maskIndex == 1 else 0
     b = originalColor[2] if maskIndex == 2 else 0
