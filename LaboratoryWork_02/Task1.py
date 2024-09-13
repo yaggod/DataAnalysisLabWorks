@@ -1,8 +1,9 @@
 from PIL import Image
+from PIL import ImageFile
 from sys import argv
 
 
-def process_image(image : Image):
+def process_image(image : ImageFile):
     width, height = image.size
     bufferImage = Image.new("RGB", image.size)
     resultImage = Image.new("RGB", (width*4, height))
