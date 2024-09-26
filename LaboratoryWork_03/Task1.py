@@ -34,28 +34,27 @@ allTheActions = {
 
 
 parser = ArgumentParser()
-parser.add_argument("--directory", default="", help="Working directory path (default: current folder)")
+parser.add_argument("--directory", default="LaboratoryWork_03\\img", help="Working directory path (default: current folder)")
 for actionName in allTheActions.keys():
     parser.add_argument(f"--{actionName}", dest="actionsList", action="append_const", const=allTheActions[actionName])
 args = parser.parse_args()
 actionsToApply = args.actionsList or allTheActions.values()
 
 
-
-filesPattern = Path(args.directory).joinpath("*.jpg")
+workingDirectory = Path(args.directory)
+filesPattern = workingDirectory.joinpath("*.jpg")
 images = io.imread_collection(str(filesPattern))
 
 
 newImages = []
 
-for image in images:
+for i in range(min(len(images), 20)):
+    image = images[i]
     for action in actionsToApply:
         newImage = action(image).astype(uint8)
         newImages.append(newImage)
 
 
-outputPath = Path(args.directory).joinpath("result")
-outputPath.mkdir(exist_ok=True)
-allTheImages = list(images) + newImages
-for i in range(len(allTheImages)):
-    io.imsave(outputPath.joinpath(f"{i:04}.jpg"), allTheImages[i])
+
+for i in range(len(newImages)):
+    io.imsave(workingDirectory.joinpath(f"{i+min(len(images), 20):04}.jpg"), newImages[i])
