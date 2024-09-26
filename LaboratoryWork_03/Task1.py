@@ -1,6 +1,7 @@
+from pathlib import Path
 from argparse import ArgumentParser
-from skimage import transform
-from numpy import flipud
+from skimage import io, transform
+from numpy import uint8, flipud
 
 def rotate_clockwise(image):
     return transform.rotate(image, -90, True, preserve_range=True)
@@ -39,3 +40,22 @@ for actionName in allTheActions.keys():
 args = parser.parse_args()
 actionsToApply = args.actionsList or allTheActions.values()
 
+
+
+filesPattern = Path(args.directory).joinpath("*.jpg")
+images = io.imread_collection(str(filesPattern))
+
+
+newImages = []
+
+for image in images:
+    for action in actionsToApply:
+        newImage = action(image).astype(uint8)
+        newImages.append(newImage)
+
+
+outputPath = Path(args.directory).joinpath("result")
+outputPath.mkdir(exist_ok=True)
+allTheImages = list(images) + newImages
+for i in range(len(allTheImages)):
+    io.imsave(outputPath.joinpath(f"{i:04}.jpg"), allTheImages[i])
