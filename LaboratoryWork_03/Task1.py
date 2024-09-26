@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from skimage import transform
 from numpy import flipud
 
@@ -28,4 +29,13 @@ allTheActions = {
     "swirl" : swirl,
     "complexTransform" : complex_transform
 }
+
+
+
+parser = ArgumentParser()
+parser.add_argument("--directory", default="", help="Working directory path (default: current folder)")
+for actionName in allTheActions.keys():
+    parser.add_argument(f"--{actionName}", dest="actionsList", action="append_const", const=allTheActions[actionName])
+args = parser.parse_args()
+actionsToApply = args.actionsList or allTheActions.values()
 
