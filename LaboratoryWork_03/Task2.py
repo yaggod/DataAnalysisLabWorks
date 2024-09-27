@@ -19,7 +19,6 @@ def plot_histograms(subfigure : SubFigure, histograms : list[list]):
         plot.set_yticks([])
 
 parser = ArgumentParser()
-
 parser.add_argument("--file", required=True, help="File to analyze")
 args = parser.parse_args()
 
