@@ -10,12 +10,12 @@ args = parser.parse_args()
 
 filePath = Path(args.file)
 
-cap = cv2.VideoCapture(filePath)
-frameTime = int(1000 / cap.get(cv2.CAP_PROP_FPS))
+video = cv2.VideoCapture(filePath)
+frameTime = int(1000 / video.get(cv2.CAP_PROP_FPS))
 
 lastFrameTime = time() - (frameTime / 1000)
-while cap.isOpened():
-    success, frame = cap.read()
+while video.isOpened():
+    success, frame = video.read()
  
     currentFps = 1 / (time() - lastFrameTime)
     lastFrameTime = time()
@@ -29,5 +29,5 @@ while cap.isOpened():
     cv2.waitKey(frameTime) # for some reason, its not working with the regular sleep
 
  
-cap.release()
+video.release()
 cv2.destroyAllWindows()
