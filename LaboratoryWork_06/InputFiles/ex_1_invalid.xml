@@ -3,11 +3,11 @@
 <component type="Documents" context="User">
         <displayName>My Video</displayName>
         <role role="Data">
-            <detects>           
+            <detectsList>           
                 <detect>
                     <condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_MYVIDEO%")</condition>
                 </detect>
-            </detects>
+            </detectsList>
             <rules>
                 <include filter='MigXmlHelper.IgnoreIrrelevantLinks()'>
                     <objectSet>
