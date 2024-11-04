@@ -7,11 +7,9 @@ parser.add_argument("--schema", type=str, default="task1Schema.xsd", help="Valid
 args = parser.parse_args()
 
 
-try:
-    validationSchema = XMLSchema(args.schema)
-    if validationSchema.is_valid(args.file):
-        print("File is valid")
-    else:
-        raise
-except:
+
+validationSchema = XMLSchema(args.schema)
+if validationSchema.is_valid(args.file):
+    print("File is valid")
+else:
     print("File is not valid")
