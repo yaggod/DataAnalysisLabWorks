@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <PrintData>
-    <PrinterName/>
+    <PrinterName />
     <TemplateName>A4_UPL.sctmpl</TemplateName>
     <Count>1</Count>
     <Head>
@@ -31,20 +31,28 @@
             <SN2>31.03.2020</SN2>
             <QNTRows>15</QNTRows>
         </Item>
-        <Item>
-            <ArtName>Сыр Пармезан</ArtName>
-            <Barcode>2000000000100</Barcode>
-            <QNT>220,17</QNT>
-            <QNTPack>220,17</QNTPack>
-            <Unit>шт</Unit>
-            <SN1>00000015</SN1>
-            <SN2>10.04.2020</SN2>
-            <QNTRows>10</QNTRows>
-        </Item>
-    </Detail>
+    <Item>
+  <ArtName>Сыр Пармезан</ArtName>
+  <Barcode>2000000000100</Barcode>
+  <QNT>220,17</QNT>
+  <QNTPack>220,17</QNTPack>
+  <Unit>шт</Unit>
+  <SN1>00000015</SN1>
+  <SN2>10.04.2020</SN2>
+  <QNTRows>10</QNTRows>
+</Item><Item>
+  <ArtName>Сыр Пармезан</ArtName>
+  <Barcode>2000000000100</Barcode>
+  <QNT>220,17</QNT>
+  <QNTPack>220,17</QNTPack>
+  <Unit>шт</Unit>
+  <SN1>00000015</SN1>
+  <SN2>10.04.2020</SN2>
+  <QNTRows>10</QNTRows>
+</Item></Detail>
     <Summary>
-        <Summ>689,72</Summ>
-        <SummRows>43</SummRows>
+        <Summ>909.89</Summ>
+        <SummRows>53</SummRows>
     </Summary>
     <Footer>
         <Date>2020-4-9</Date>
