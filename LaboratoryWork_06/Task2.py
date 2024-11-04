@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 parser = ArgumentParser()
-parser.add_argument("--file", type=str, default="LaboratoryWork_06/inputFiles/ex_2.xml", help="File to modify")
+parser.add_argument("--file", type=str, default="inputFiles/ex_2.xml", help="File to modify")
 args = parser.parse_args()
 
 XMLToModify = ElementTree.parse(args.file)
