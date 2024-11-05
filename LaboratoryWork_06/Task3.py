@@ -3,7 +3,7 @@ from xml.etree import ElementTree
 
 
 parser = ArgumentParser()
-parser.add_argument("--file", type=str, default="LaboratoryWork_06/inputFiles/ex_3.xml", help="File to read")
+parser.add_argument("--file", type=str, default="inputFiles/ex_3.xml", help="File to read")
 args = parser.parse_args()
 
 
