@@ -14,7 +14,7 @@ newItem = {
         {
           "name": "item 4",
           "quantity": 9,
-          "price": 7500
+          "price": 75.00
         },
         {
           "name": "item 5",
