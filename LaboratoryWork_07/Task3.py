@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 
 parser = ArgumentParser()
-parser.add_argument("--file", type=str, default="LaboratoryWork_07/inputFiles/ex_3.json", help="File to validate")
+parser.add_argument("--file", type=str, default="inputFiles/ex_3.json", help="File to validate")
 args = parser.parse_args()
 
 
