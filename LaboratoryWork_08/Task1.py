@@ -41,11 +41,13 @@ def add_data(cursor : sqlite3.Cursor):
                    """, courier_to_add)
 
 
-create_tables(cursor)
-connection.commit()
-add_data(cursor)
-connection.commit()
-
+try:
+    create_tables(cursor)
+    connection.commit()
+    add_data(cursor)
+    connection.commit()
+except Exception as ex:
+    print(ex)
 
 
 
