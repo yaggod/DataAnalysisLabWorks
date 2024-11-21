@@ -16,7 +16,7 @@ def create_tables(cursor : sqlite3.Cursor):
                 surname TEXT NOT NULL,
                 first_name TEXT NOT NULL,
                 patronymic TEXT NOT NULL,
-                pasport_numbger INTEGER NOT NULL,
+                pasport_number INTEGER NOT NULL,
                 birthday_date DATE NOT NULL,
                 hiring_date DATE NOT NULL,
                 work_start_time TIME NOT NULL,
@@ -35,7 +35,7 @@ def add_data(cursor : sqlite3.Cursor):
                       "01-01-2000", "01-01-2024", "08:00:00", "18:00:00", "Kaliningrad",
                       "Nevskogo", "1", "2", "+71234567890")
     cursor.execute("INSERT INTO Vehicles(car_make, registration_date, color) VALUES(?, ?, ?)", vehicle_to_add)
-    cursor.execute("""INSERT INTO Couriers(surname, first_name, patronymic, pasport_numbger, 
+    cursor.execute("""INSERT INTO Couriers(surname, first_name, patronymic, pasport_number, 
                    birthday_date, hiring_date, work_start_time, 
                    work_end_time, city, street, house_id, apartments_id, phone_number) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                    """, courier_to_add)
