@@ -30,7 +30,7 @@ def create_tables(cursor : sqlite3.Cursor):
                """)
 
 def add_data(cursor : sqlite3.Cursor):
-    vehicle_to_add = ("Lada", "01.02.2023", "Red")
+    vehicle_to_add = ("Ladaa", "01.02.2023", "Red")
     courier_to_add = ("Ivanovich", "Ivan", "Ivanov", "123456", 
                       "01-01-2000", "01-01-2024", "08:00:00", "18:00:00", "Kaliningrad",
                       "Nevskogo", "1", "2", "+71234567890")
@@ -40,11 +40,20 @@ def add_data(cursor : sqlite3.Cursor):
                    work_end_time, city, street, house_id, apartments_id, phone_number) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                    """, courier_to_add)
 
+def modify_data(cursor : sqlite3.Cursor):
+    new_vehicle_data = ("Lada", "01.02.2023", "Red", 1)
+    cursor.execute("""UPDATE Vehicles
+                   SET car_make = ?, registration_date = ?, color = ?
+                   WHERE car_id = ?
+                   """, new_vehicle_data)
+    
+
 
 try:
     create_tables(cursor)
     connection.commit()
     add_data(cursor)
+    modify_data(cursor)
     connection.commit()
 except Exception as ex:
     print(ex)
