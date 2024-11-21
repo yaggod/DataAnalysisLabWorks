@@ -32,7 +32,7 @@ def create_tables(cursor : sqlite3.Cursor):
 def add_data(cursor : sqlite3.Cursor):
     vehicle_to_add = ("Lada", "01.02.2023", "Red")
     courier_to_add = ("Ivanovich", "Ivan", "Ivanov", "123456", 
-                      "01.01.2000", "01.01.2024", "8:00", "18:00", "Kaliningrad",
+                      "01.01.2000", "01.01.2024", "08:00:00", "18:00:00", "Kaliningrad",
                       "Nevskogo", "1", "2", "+71234567890")
     cursor.execute("INSERT INTO Vehicles(car_make, registration_date, color) VALUES(?, ?, ?)", vehicle_to_add)
     cursor.execute("""INSERT INTO Couriers(surname, first_name, patronymic, pasport_numbger, 
