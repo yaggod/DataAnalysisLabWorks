@@ -9,9 +9,6 @@ class Vehicles(Model):
     registration_date = TextField()
     color = TextField()
 
-    def add_item(car_make, registration_date, color):
-        Vehicles.create(car_make=car_make, registration_date=registration_date, color=color)
-
     class Meta:
         database = db
         db_table = "Vehicles"
@@ -32,33 +29,6 @@ class Couriers(Model):
     apartments_id = IntegerField()
     phone_number = TextField()
 
-    def add_item(surname,
-                 first_name,
-                 patronymic,
-                 pasport_number,
-                 birthday_date,
-                 hiring_date,
-                 work_start_time,
-                 work_end_time,
-                 city,
-                 street,
-                 house_id,
-                 apartments_id,
-                 phone_number):
-        Couriers.create(surname=surname,
-                        first_name=first_name,
-                        patronymic=patronymic,
-                        pasport_number=pasport_number,
-                        birthday_date=birthday_date,
-                        hiring_date=hiring_date,
-                        work_start_time=work_start_time,
-                        work_end_time=work_end_time,
-                        city=city,
-                        street=street,
-                        house_id=house_id,
-                        apartments_id=apartments_id,
-                        phone_number=phone_number)
-
     class Meta:
         database = db
         db_table = "Couriers"
@@ -76,27 +46,6 @@ class Senders(Model):
     apartments_id = IntegerField()
     phone_number = TextField()
 
-    def add_item(surname,
-                 first_name,
-                 patronymic,
-                 birthday_date,
-                 post_index,
-                 city,
-                 street,
-                 house_id,
-                 apartments_id,
-                 phone_number):
-        Senders.create(surname=surname,
-                       first_name=first_name,
-                       patronymic=patronymic,
-                       birthday_date=birthday_date,
-                       post_index=post_index,
-                       city=city,
-                       street=street,
-                       house_id=house_id,
-                       apartments_id=apartments_id,
-                       phone_number=phone_number)
-
     class Meta:
         database = db
         db_table = "Senders"
@@ -113,20 +62,7 @@ class Recievers(Model):
     house_id = IntegerField()
     apartments_id = IntegerField()
     phone_number = TextField()
-
-    def add_item(surname,
-                 first_name,
-                 patronymic,
-                 birthday_date,
-                 post_index,
-                 city,
-                 street,
-                 house_id,
-                 apartments_id,
-                 phone_number):
-        Recievers.add_item()
         
-
     class Meta:
         database = db
         db_table = "Recievers"
@@ -140,24 +76,6 @@ class Orders(Model):
     price = IntegerField()
     courier = ForeignKeyField(Couriers, "courier_id")
     vehicle = ForeignKeyField(Vehicles, "car_id")
-    
-    def add_item(order_id,
-                 sender_id,
-                 reciever_id,
-                 order_date,
-                 delivery_date,
-                 price,
-                 courier,
-                 vehicle):
-        Orders.create(
-                 order_id=order_id,
-                 sender_id=sender_id,
-                 reciever_id=reciever_id,
-                 order_date=order_date,
-                 delivery_date=delivery_date,
-                 price=price,
-                 courier=courier,
-                 vehicle=vehicle)
 
     class Meta:
         database = db
@@ -168,8 +86,70 @@ def create_tables():
     Recievers.create_table()
     Orders.create_table()
 
-
+def add_example_data():
+    sender1 = Senders.create(surname = "Ivanov",
+                      first_name = "Ivan",
+                      patronymic = "Petrovich",
+                      birthday_date = date(1990, 12, 10),
+                      post_index = 123456,
+                      city = "Kaliningrad",
+                      street = "Nevskogo",
+                      house_id = 123,
+                      apartments_id = 456,
+                      phone_number = "+71111111111")
+    
+    sender2 = Senders.create(surname = "Ivanov",
+                      first_name = "Ivan",
+                      patronymic = "Smirnov",
+                      birthday_date = date(1990, 10, 12),
+                      post_index = 234567,
+                      city = "Kaliningrad",
+                      street = "Kuybisheva",
+                      house_id = 234,
+                      apartments_id = 345,
+                      phone_number = "+71111111222")
+    
+    reciever1 = Recievers.create(surname = "Ivanov",
+                      first_name = "Ivan",
+                      patronymic = "Smirnov",
+                      birthday_date = date(1990, 10, 12),
+                      post_index = 234567,
+                      city = "Kaliningrad",
+                      street = "Kuybisheva",
+                      house_id = 234,
+                      apartments_id = 345,
+                      phone_number = "+71111111222")
+    
+    reciever2 = Recievers.create(surname = "Ivanov",
+                      first_name = "Ivan",
+                      patronymic = "Petrovich",
+                      birthday_date = date(1990, 12, 10),
+                      post_index = 123456,
+                      city = "Kaliningrad",
+                      street = "Nevskogo",
+                      house_id = 123,
+                      apartments_id = 456,
+                      phone_number = "+71111111111")
+    
+    order1 = Orders.create(sender_id = sender1,
+                           reciever_id = reciever1,
+                           order_date = date(2024, 11, 15),
+                           delivery_date = date(2024, 11, 20),
+                           price = 1200,
+                           courier = 1,
+                           vehicle = 1)
+    
+    order2 = Orders.create(sender_id = sender2,
+                           reciever_id = reciever2,
+                           order_date = date(2024, 11, 10),
+                           delivery_date = date(2024, 11, 15),
+                           price = 1400,
+                           courier = 1,
+                           vehicle = 1)
+    
+    
 try:
     create_tables()
+    add_example_data()
 except Exception as exception:
     print(exception)
