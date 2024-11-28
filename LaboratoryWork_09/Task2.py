@@ -2,7 +2,7 @@ import pyexcel
 from MoneyParser import *
 
 
-book = pyexcel.get_book(file_name="result.xls")
+book = pyexcel.get_book(file_name="result.xlsx")
 sheet = book.sheet_by_index(0)
 people = [row for row in list(sheet)[1:] if row[0] != ""]
 
