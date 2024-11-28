@@ -47,4 +47,4 @@ data["Sheet1"].sort(key=lambda item: item[2])
 data["Sheet1"].append(totalSumm)
 data["Sheet1"].insert(0, header)
 
-pyexcel.save_book_as(bookdict=data, dest_file_name="result.xls")
+pyexcel.save_book_as(bookdict=data, dest_file_name="result.xlsx")

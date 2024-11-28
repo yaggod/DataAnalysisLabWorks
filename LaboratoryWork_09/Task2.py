@@ -44,4 +44,4 @@ for department in departmentsSalaries:
     sheet[xIndex, 2] = departmentsSalaries[department]
     xIndex += 1
 
-book.save_as("result.xls")
+book.save_as("result.xlsx")
